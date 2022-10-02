@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Missile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://DebugPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI_cross.png" type="Texture" id=5]
+[ext_resource path="res://Main.gd" type="Script" id=6]
+[ext_resource path="res://Island.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Rock.tscn" type="PackedScene" id=8]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( -4597, -4319, 6509, -4105, 6509, 5804, -4683, 5591 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -4597, -4319, 6509, -4105, 6509, 5804, -4683, 5591 ) ]
+
+[node name="Main" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.12549, 0.756863, 0.117647, 0.392157 )
+margin_left = -2044.0
+margin_top = -1951.0
+margin_right = 3718.0
+margin_bottom = 2628.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+pause_mode = 1
+position = Vector2( -748, -11 )
+
+[node name="Missile" parent="." instance=ExtResource( 3 )]
+pause_mode = 1
+position = Vector2( -1689, -570 )
+
+[node name="DebugPanel" parent="." instance=ExtResource( 4 )]
+
+[node name="Cross" type="Sprite" parent="."]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="Islands" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Island" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( 1895, -654 )
+
+[node name="Island4" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( 1107, -414 )
+
+[node name="Island5" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( 1891, 362 )
+
+[node name="Island6" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( 276, -689 )
+
+[node name="Island7" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( -905, -555 )
+
+[node name="Island8" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( -1019, 287 )
+
+[node name="Island9" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( -888, 1132 )
+
+[node name="Island10" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( 474, 1221 )
+
+[node name="Island11" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( 1742, 1243 )
+
+[node name="Island2" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( -103, 331 )
+
+[node name="Island3" parent="Islands" instance=ExtResource( 7 )]
+position = Vector2( 956, 609 )
+
+[node name="Rock" parent="Islands" instance=ExtResource( 8 )]
+position = Vector2( 3552, -1689 )
+
+[node name="Rock2" parent="Islands" instance=ExtResource( 8 )]
+position = Vector2( -2059, -1621 )
+
+[node name="Rock3" parent="Islands" instance=ExtResource( 8 )]
+position = Vector2( -2059, 2481 )
+
+[node name="Rock4" parent="Islands" instance=ExtResource( 8 )]
+position = Vector2( 3671, 2447 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color( 1, 0.486275, 0.4, 1 )
